@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-[CreateAssetMenu(fileName = "TriadPalette", menuName = "ScriptableObjects/TriadPalette", order = 1)]
-public class TriadPalette : ScriptableObject
+[CreateAssetMenu(fileName = "TriadicPalette", menuName = "ScriptableObjects/TriadicPalette", order = 1)]
+public class TriadicPaletteSO : ScriptableObject
 {
     private float _minS = 0f, _maxS = 1f, _minV = 0f, _maxV = 1f;
 
@@ -85,6 +85,11 @@ public class TriadPalette : ScriptableObject
         color2 = Color.HSVToRGB((H + 0.33f) % 1f, S, V);
         color3 = Color.HSVToRGB((H + 0.66f) % 1f, S, V);
         Debug.Log("Creating palette");
+    }
+
+    public void RandomizePallete()
+    {
+        color1 = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
     }
 
 }

@@ -9,7 +9,8 @@ public class Waiter : MonoBehaviour
 {
     [SerializeField]
     private float maxSecondsToDelay;
-    [ShowInInspector]
+    //[SerializeField]
+    //private SpriteRenderer mask, jewels, feather;
     protected Seat targetSeat
     {
         get { return _targetSeat; }
@@ -33,6 +34,13 @@ public class Waiter : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         float secondsToDelay = Random.Range(0, maxSecondsToDelay);
         StartCoroutine(StartDelay(secondsToDelay));
+    }
+
+    private void GenerateColors()
+    {
+        TriadicPaletteSO newColorPallete = ScriptableObject.CreateInstance(typeof(TriadicPaletteSO)) as TriadicPaletteSO;
+
+        //TODO
     }
 
     private IEnumerator StartDelay(float secondsToDelay)
