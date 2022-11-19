@@ -43,11 +43,10 @@ public class Murderer : Waiter
         while (targetSeat == null)
         {
             Seat newSeat = MasqueradeManager.Instance.GetEmptySeatForMurderer(sequence[currentSequenceIndex]);
-            Debug.Log(newSeat);
             if (newSeat != null)
             {
+                newSeat.Reserve(this);
                 targetSeat = newSeat;
-                targetSeat.Reserve(this);
             }
             yield return new WaitForSeconds(0.1f);
         }

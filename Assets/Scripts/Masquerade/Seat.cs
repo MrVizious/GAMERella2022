@@ -33,13 +33,15 @@ public class Seat : MonoBehaviour
         owner = newWaiter;
     }
 
-    public void Use(Waiter newWaiter)
+    public void Occupy(Waiter newWaiter)
     {
+        Debug.Log("Trying to occupate", gameObject);
         if (newWaiter != owner)
         {
             Debug.LogError("A waiter that is not the owner is trying to use this seat!\nOwner: " + owner + "\nNew waiter: " + newWaiter, this);
             return;
         }
+        Debug.Log("Occupied!", gameObject);
         DisappearItems();
         isReserved = false;
         isBeingUsed = true;

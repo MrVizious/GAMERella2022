@@ -7,20 +7,25 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Waiter : MonoBehaviour
 {
+    [SerializeField]
+    private float maxSecondsToDelay;
     [ShowInInspector]
-    public static float maxSecondsToDelay;
     protected Seat targetSeat
     {
         get { return _targetSeat; }
         set
         {
-            _targetSeat = value;
-            agent.SetDestination(targetSeat.transform.position);
+            if (hasArrivedToSeatCoroutine == null)
+            {
+                _targetSeat = value;
+                agent.SetDestination(targetSeat.transform.position);
+                hasArrivedToSeatCoroutine = StartCoroutine(HasArrivedToSeatCoroutine());
+            }
         }
     }
     private Seat _targetSeat;
-    [ShowInInspector]
     protected Coroutine findNextSeatCoroutine = null;
+    protected Coroutine hasArrivedToSeatCoroutine = null;
     protected NavMeshAgent agent;
 
     protected void Start()
@@ -53,10 +58,49 @@ public class Waiter : MonoBehaviour
     {
         while (targetSeat == null)
         {
-            targetSeat = MasqueradeManager.Instance.GetEmptySeatForWaiter();
+            Seat newSeat = MasqueradeManager.Instance.GetEmptySeatForWaiter();
+            if (newSeat != null)
+            {
+                newSeat.Reserve(this);
+                targetSeat = newSeat;
+            }
             yield return new WaitForSeconds(0.1f);
         }
         findNextSeatCoroutine = null;
+    }
+
+    private IEnumerator HasArrivedToSeatCoroutine()
+    {
+        while (!HasArrivedToSeat())
+        {
+            yield return new WaitForSeconds(0.05f);
+        }
+        targetSeat.Occupy(this);
+        hasArrivedToSeatCoroutine = null;
+    }
+
+    private bool HasArrivedToSeat()
+    {
+        if (!agent.pathPending)
+        {
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+                {
+                    Debug.Log("Has arrived!");
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private void OnDestroy()
+    {
+        if (targetSeat != null)
+        {
+            targetSeat.Free(this);
+        }
     }
 
 }
