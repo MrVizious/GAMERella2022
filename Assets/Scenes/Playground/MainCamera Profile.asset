@@ -43,7 +43,7 @@ MonoBehaviour:
     m_Value: 0.85
   intensity:
     m_OverrideState: 1
-    m_Value: 4.69
+    m_Value: 2.7
   scatter:
     m_OverrideState: 0
     m_Value: 0.7
@@ -240,7 +240,7 @@ MonoBehaviour:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0.07309941
+          time: 0.10526316
           value: 1
           inSlope: 0
           outSlope: 0
@@ -254,22 +254,13 @@ MonoBehaviour:
   lumVsSat:
     m_OverrideState: 1
     m_Value:
-      <length>k__BackingField: 1
+      <length>k__BackingField: 0
       m_Loop: 0
       m_ZeroValue: 0.5
       m_Range: 1
       m_Curve:
         serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0.114035085
-          value: 0.0869565
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
+        m_Curve: []
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
@@ -334,10 +325,10 @@ MonoBehaviour:
   active: 1
   postExposure:
     m_OverrideState: 1
-    m_Value: -0.37
+    m_Value: 0
   contrast:
     m_OverrideState: 1
-    m_Value: 36
+    m_Value: 16
   colorFilter:
     m_OverrideState: 1
     m_Value: {r: 0.9622642, g: 0.51738864, b: 0.32226774, a: 1}
@@ -346,4 +337,4 @@ MonoBehaviour:
     m_Value: 0
   saturation:
     m_OverrideState: 1
-    m_Value: 21
+    m_Value: 0
