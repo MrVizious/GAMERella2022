@@ -2492,7 +2492,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13289bf1b3a439548b2687dfbbc75b98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seats: []
+  stationName: 2
+  seats:
+  - {fileID: 525723406}
+  - {fileID: 234331504}
+  - {fileID: 472015517}
+  - {fileID: 215905533}
+  - {fileID: 1898734472}
+  - {fileID: 121815248}
 --- !u!65 &926219010
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3328,7 +3335,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13289bf1b3a439548b2687dfbbc75b98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seats: []
+  stationName: 1
+  seats:
+  - {fileID: 1219304188}
+  - {fileID: 748765751}
+  - {fileID: 385703836}
+  - {fileID: 1847245991}
+  - {fileID: 1590117885}
+  - {fileID: 1877647756}
 --- !u!65 &1624443281
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3624,7 +3638,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13289bf1b3a439548b2687dfbbc75b98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seats: []
+  stationName: 0
+  seats:
+  - {fileID: 1297510627}
+  - {fileID: 1364196668}
+  - {fileID: 1814044338}
+  - {fileID: 252618151}
+  - {fileID: 210895587}
+  - {fileID: 548645939}
 --- !u!65 &1823600531
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4083,7 +4104,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13289bf1b3a439548b2687dfbbc75b98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seats: []
+  stationName: 3
+  seats:
+  - {fileID: 622117232}
+  - {fileID: 427208546}
+  - {fileID: 823109686}
+  - {fileID: 156767899}
+  - {fileID: 688044932}
+  - {fileID: 253032614}
 --- !u!65 &1944674502
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4808,7 +4836,7 @@ PrefabInstance:
     - target: {fileID: 5519942228747472578, guid: 90da4c644e8b2cf4ea5f17228a5b3dac,
         type: 3}
       propertyPath: m_Name
-      value: Waiter
+      value: Murderer
       objectReference: {fileID: 0}
     - target: {fileID: 5519942228747472578, guid: 90da4c644e8b2cf4ea5f17228a5b3dac,
         type: 3}

@@ -39,13 +39,11 @@ public class Station : MonoBehaviour
     {
         if (numberOfFreeSeats > 0)
         {
-            Debug.Log("There are free seats here!", this);
             while (true)
             {
                 Seat randomSeat = seats[Random.Range(0, seats.Count)];
                 if (randomSeat.isFree)
                 {
-                    Debug.Log("Found seat!");
                     return randomSeat;
                 }
             }

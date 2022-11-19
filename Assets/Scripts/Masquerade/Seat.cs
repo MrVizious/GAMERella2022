@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Sirenix.OdinInspector;
 
 public class Seat : MonoBehaviour
 {
+    [ShowInInspector]
     public bool isFree
     {
         get
@@ -26,9 +28,9 @@ public class Seat : MonoBehaviour
             Debug.LogError("Can't reserve because it is not free");
             return;
         }
+        Debug.Log("Reserved!");
         isReserved = true;
         owner = newWaiter;
-        Debug.Log("Reserved");
     }
 
     public void Use(Waiter newWaiter)
