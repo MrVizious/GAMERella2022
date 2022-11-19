@@ -21,7 +21,14 @@ public class Seat : MonoBehaviour
 
     public void Reserve(Waiter newWaiter)
     {
+        if (!isFree)
+        {
+            Debug.LogError("Can't reserve because it is not free");
+            return;
+        }
+        isReserved = true;
         owner = newWaiter;
+        Debug.Log("Reserved");
     }
 
     public void Use(Waiter newWaiter)
@@ -32,6 +39,8 @@ public class Seat : MonoBehaviour
             return;
         }
         DisappearItems();
+        isReserved = false;
+        isBeingUsed = true;
     }
     public void Free(Waiter newWaiter)
     {
@@ -41,6 +50,8 @@ public class Seat : MonoBehaviour
             return;
         }
         ReappearItems();
+        isBeingUsed = false;
+        isReserved = false;
     }
 
     private void DisappearItems()

@@ -34,6 +34,7 @@ public class Murderer : Waiter
             Debug.Log("Getting next seat!");
             currentSequenceIndex++;
             currentSequenceIndex %= sequence.Count;
+            Debug.Log("Current index " + currentSequenceIndex + ", meaning " + sequence[currentSequenceIndex]);
             findNextSeatCoroutine = StartCoroutine(GetNextSeatCoroutine());
         }
     }
@@ -43,7 +44,8 @@ public class Murderer : Waiter
         while (targetSeat == null)
         {
             Debug.Log("Looking for empty seat");
-            targetSeat = MasqueradeManager.Instance.GetEmptySeatForMurderer((StationName)currentSequenceIndex);
+            targetSeat = MasqueradeManager.Instance.GetEmptySeatForMurderer(sequence[currentSequenceIndex]);
+            if (targetSeat != null) targetSeat.Reserve(this);
             yield return new WaitForSeconds(0.1f);
         }
         findNextSeatCoroutine = null;

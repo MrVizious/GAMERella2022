@@ -7,6 +7,7 @@ public class Station : MonoBehaviour
 {
     public StationName stationName;
     public List<Seat> seats;
+    [ShowInInspector]
     public int numberOfFreeSeats
     {
         get

@@ -37,7 +37,7 @@ public class MasqueradeManager : Singleton<MasqueradeManager>
         {
             if (station.stationName == stationToOccupy)
             {
-                Debug.Log("Correct stationname " + station);
+                Debug.Log("Correct stationname " + station.stationName + " == " + stationToOccupy);
                 return station.GetEmptySeatForMurderer();
             }
         }
