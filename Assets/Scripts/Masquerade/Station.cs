@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class Station : MonoBehaviour
 {
-    public StationNames stationName { get; private set; }
+    public StationName stationName;
     public List<Seat> seats;
     public int numberOfFreeSeats
     {
@@ -35,20 +36,24 @@ public class Station : MonoBehaviour
 
     private Seat GetEmptySeat()
     {
-
         if (numberOfFreeSeats > 0)
         {
+            Debug.Log("There are free seats here!", this);
             while (true)
             {
                 Seat randomSeat = seats[Random.Range(0, seats.Count)];
-                if (randomSeat.isFree) return randomSeat;
+                if (randomSeat.isFree)
+                {
+                    Debug.Log("Found seat!");
+                    return randomSeat;
+                }
             }
         }
         return null;
     }
 }
 
-public enum StationNames
+public enum StationName
 {
     Vino,
     Platos,

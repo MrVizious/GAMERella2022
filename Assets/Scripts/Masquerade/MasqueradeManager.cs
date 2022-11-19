@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
-public class MasqueradeManager : MonoBehaviour
+public class MasqueradeManager : Singleton<MasqueradeManager>
 {
-    public static List<Station> stations;
 
-    public static Seat GetEmptySeatForWaiter()
+    [SerializeField]
+    public List<Station> stations;
+
+    public Seat GetEmptySeatForWaiter()
     {
         if (!VacancyForWaiter()) return null;
 
@@ -17,7 +20,7 @@ public class MasqueradeManager : MonoBehaviour
             if (randomSeat != null) return randomSeat;
         }
     }
-    public static Seat GetEmptySeatForMurderer()
+    public Seat GetEmptySeatForMurderer()
     {
         if (!VacancyForMurderer()) return null;
 
@@ -28,19 +31,20 @@ public class MasqueradeManager : MonoBehaviour
             if (randomSeat != null) return randomSeat;
         }
     }
-    public static Seat GetEmptySeatForMurderer(StationNames stationToOccupy)
+    public Seat GetEmptySeatForMurderer(StationName stationToOccupy)
     {
         foreach (Station station in stations)
         {
             if (station.stationName == stationToOccupy)
             {
+                Debug.Log("Correct stationname " + station);
                 return station.GetEmptySeatForMurderer();
             }
         }
         return null;
     }
 
-    private static bool Vacancy(int minNumberOfSeats = 1)
+    private bool Vacancy(int minNumberOfSeats = 1)
     {
 
         bool vacancy = false;
@@ -54,11 +58,11 @@ public class MasqueradeManager : MonoBehaviour
         }
         return vacancy;
     }
-    public static bool VacancyForWaiter()
+    public bool VacancyForWaiter()
     {
         return Vacancy(2);
     }
-    public static bool VacancyForMurderer()
+    public bool VacancyForMurderer()
     {
         return Vacancy();
     }

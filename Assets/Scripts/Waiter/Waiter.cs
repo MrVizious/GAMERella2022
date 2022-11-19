@@ -1,32 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class Waiter : MonoBehaviour
 {
 
+    [ShowInInspector]
     public static float maxSecondsToDelay;
-    private Seat targetSeat;
+    [ShowInInspector]
+    protected Seat targetSeat;
+    [ShowInInspector]
+    protected Coroutine findNextSeatCoroutine = null;
 
-    private void Start()
+    protected void Start()
     {
         float secondsToDelay = Random.Range(0, maxSecondsToDelay);
         StartCoroutine(StartDelay(secondsToDelay));
     }
 
-    IEnumerator StartDelay(float secondsToDelay)
+    private IEnumerator StartDelay(float secondsToDelay)
     {
         yield return new WaitForSeconds(secondsToDelay);
         DelayedStart();
     }
+
     private void DelayedStart()
     {
-
+        GetNextSeat();
     }
 
-    private void GetNextSeat()
+    protected virtual void GetNextSeat()
     {
-        MasqueradeManager.GetEmptySeatForWaiter();
+        if (findNextSeatCoroutine == null)
+        {
+            findNextSeatCoroutine = StartCoroutine(GetNextSeatCoroutine());
+        }
+    }
+
+    protected virtual IEnumerator GetNextSeatCoroutine()
+    {
+        while (targetSeat == null)
+        {
+            targetSeat = MasqueradeManager.Instance.GetEmptySeatForWaiter();
+            yield return new WaitForSeconds(0.1f);
+        }
+        findNextSeatCoroutine = null;
     }
 
 }

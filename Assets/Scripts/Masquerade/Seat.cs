@@ -13,7 +13,7 @@ public class Seat : MonoBehaviour
         }
     }
     public string correctAnimationName, wrongAnimationName;
-    private bool isReserved, isBeingUsed;
+    private bool isReserved = false, isBeingUsed = false;
     private Waiter owner;
 
     [SerializeField]
