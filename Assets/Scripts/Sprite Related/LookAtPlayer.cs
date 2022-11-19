@@ -8,7 +8,7 @@ public class LookAtPlayer : MonoBehaviour
 
     void Update()
     {
-        Vector3 forwardDirection = transform.position - player.position;
+        Vector3 forwardDirection = player.position - transform.position;
         forwardDirection.y = 0;
         Quaternion newRotation = Quaternion.LookRotation(forwardDirection, Vector3.up);
         transform.rotation = newRotation;
