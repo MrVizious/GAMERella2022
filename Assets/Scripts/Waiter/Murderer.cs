@@ -23,7 +23,7 @@ public class Murderer : Waiter
         sequence = allStationNames.OrderBy(x => rnd.Next()).ToList();
     }
 
-    protected override void GetNextSeat()
+    public override void GetNextSeat()
     {
         if (findNextSeatCoroutine == null)
         {

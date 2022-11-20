@@ -221,8 +221,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab5dd6e6d37682458b74950b5a118c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnimationName: 
-  wrongAnimationName: 
+  correctAnimationName: Rope
+  wrongAnimationName: Rope Murderer
   itemsToDisappear: []
 --- !u!23 &121815250
 MeshRenderer:
@@ -418,8 +418,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab5dd6e6d37682458b74950b5a118c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnimationName: 
-  wrongAnimationName: 
+  correctAnimationName: Jacket
+  wrongAnimationName: Jacket Murderer
   itemsToDisappear: []
 --- !u!23 &156767901
 MeshRenderer:
@@ -517,8 +517,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab5dd6e6d37682458b74950b5a118c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnimationName: 
-  wrongAnimationName: 
+  correctAnimationName: Wine
+  wrongAnimationName: Wine Murderer
   itemsToDisappear: []
 --- !u!23 &210895589
 MeshRenderer:
@@ -616,8 +616,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab5dd6e6d37682458b74950b5a118c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnimationName: 
-  wrongAnimationName: 
+  correctAnimationName: Rope
+  wrongAnimationName: Rope Murderer
   itemsToDisappear: []
 --- !u!23 &215905535
 MeshRenderer:
@@ -721,8 +721,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab5dd6e6d37682458b74950b5a118c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnimationName: 
-  wrongAnimationName: 
+  correctAnimationName: Rope
+  wrongAnimationName: Rope Murderer
   itemsToDisappear: []
 --- !u!23 &234331506
 MeshRenderer:
@@ -820,8 +820,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab5dd6e6d37682458b74950b5a118c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnimationName: 
-  wrongAnimationName: 
+  correctAnimationName: Wine
+  wrongAnimationName: Wine Murderer
   itemsToDisappear: []
 --- !u!23 &252618153
 MeshRenderer:
@@ -919,8 +919,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab5dd6e6d37682458b74950b5a118c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnimationName: 
-  wrongAnimationName: 
+  correctAnimationName: Jacket
+  wrongAnimationName: Jacket Murderer
   itemsToDisappear: []
 --- !u!23 &253032616
 MeshRenderer:
@@ -1116,8 +1116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab5dd6e6d37682458b74950b5a118c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnimationName: 
-  wrongAnimationName: 
+  correctAnimationName: Plates
+  wrongAnimationName: Plates Murderer
   itemsToDisappear:
   - {fileID: 130607823}
 --- !u!23 &385703838
@@ -1229,8 +1229,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab5dd6e6d37682458b74950b5a118c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnimationName: 
-  wrongAnimationName: 
+  correctAnimationName: Jacket
+  wrongAnimationName: Jacket Murderer
   itemsToDisappear: []
 --- !u!23 &427208548
 MeshRenderer:
@@ -1458,8 +1458,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab5dd6e6d37682458b74950b5a118c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnimationName: 
-  wrongAnimationName: 
+  correctAnimationName: Rope
+  wrongAnimationName: Rope Murderer
   itemsToDisappear: []
 --- !u!23 &472015519
 MeshRenderer:
@@ -1675,8 +1675,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab5dd6e6d37682458b74950b5a118c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnimationName: 
-  wrongAnimationName: 
+  correctAnimationName: Rope
+  wrongAnimationName: Rope Murderer
   itemsToDisappear: []
 --- !u!23 &525723408
 MeshRenderer:
@@ -1969,8 +1969,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab5dd6e6d37682458b74950b5a118c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnimationName: 
-  wrongAnimationName: 
+  correctAnimationName: Wine
+  wrongAnimationName: Wine Murderer
   itemsToDisappear: []
 --- !u!23 &548645941
 MeshRenderer:
@@ -2198,8 +2198,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab5dd6e6d37682458b74950b5a118c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnimationName: 
-  wrongAnimationName: 
+  correctAnimationName: Jacket
+  wrongAnimationName: Jacket Murderer
   itemsToDisappear: []
 --- !u!23 &622117234
 MeshRenderer:
@@ -2413,8 +2413,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab5dd6e6d37682458b74950b5a118c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnimationName: 
-  wrongAnimationName: 
+  correctAnimationName: Jacket
+  wrongAnimationName: Jacket Murderer
   itemsToDisappear: []
 --- !u!23 &688044934
 MeshRenderer:
@@ -2694,8 +2694,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab5dd6e6d37682458b74950b5a118c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnimationName: 
-  wrongAnimationName: 
+  correctAnimationName: Plates
+  wrongAnimationName: Plates Murderer
   itemsToDisappear:
   - {fileID: 722057314}
 --- !u!23 &748765753
@@ -2807,8 +2807,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab5dd6e6d37682458b74950b5a118c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnimationName: 
-  wrongAnimationName: 
+  correctAnimationName: Jacket
+  wrongAnimationName: Jacket Murderer
   itemsToDisappear: []
 --- !u!23 &823109688
 MeshRenderer:
@@ -3156,7 +3156,7 @@ GameObject:
   - component: {fileID: 926219010}
   - component: {fileID: 926219009}
   m_Layer: 0
-  m_Name: Punch table
+  m_Name: Rope table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3727,8 +3727,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab5dd6e6d37682458b74950b5a118c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnimationName: 
-  wrongAnimationName: 
+  correctAnimationName: Plates
+  wrongAnimationName: Plates Murderer
   itemsToDisappear:
   - {fileID: 1293927639}
 --- !u!23 &1219304190
@@ -3919,7 +3919,7 @@ PrefabInstance:
     - target: {fileID: 7605530706242644115, guid: 796fb8085d069634ca359d627a633b23,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -4062,8 +4062,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab5dd6e6d37682458b74950b5a118c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnimationName: 
-  wrongAnimationName: 
+  correctAnimationName: Wine
+  wrongAnimationName: Wine Murderer
   itemsToDisappear: []
 --- !u!23 &1297510629
 MeshRenderer:
@@ -4227,8 +4227,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab5dd6e6d37682458b74950b5a118c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnimationName: 
-  wrongAnimationName: 
+  correctAnimationName: Wine
+  wrongAnimationName: Wine Murderer
   itemsToDisappear: []
 --- !u!23 &1364196670
 MeshRenderer:
@@ -4423,7 +4423,7 @@ PrefabInstance:
     - target: {fileID: 7605530706242644115, guid: 796fb8085d069634ca359d627a633b23,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -4519,8 +4519,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab5dd6e6d37682458b74950b5a118c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnimationName: 
-  wrongAnimationName: 
+  correctAnimationName: Plates
+  wrongAnimationName: Plates Murderer
   itemsToDisappear:
   - {fileID: 368996813}
 --- !u!23 &1590117887
@@ -4829,7 +4829,7 @@ PrefabInstance:
     - target: {fileID: 7605530706242644115, guid: 796fb8085d069634ca359d627a633b23,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -5105,8 +5105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab5dd6e6d37682458b74950b5a118c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnimationName: 
-  wrongAnimationName: 
+  correctAnimationName: Wine
+  wrongAnimationName: Wine Murderer
   itemsToDisappear: []
 --- !u!23 &1814044340
 MeshRenderer:
@@ -5334,8 +5334,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab5dd6e6d37682458b74950b5a118c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnimationName: 
-  wrongAnimationName: 
+  correctAnimationName: Plates
+  wrongAnimationName: Plates Murderer
   itemsToDisappear:
   - {fileID: 598584769}
 --- !u!23 &1847245993
@@ -5435,8 +5435,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab5dd6e6d37682458b74950b5a118c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnimationName: 
-  wrongAnimationName: 
+  correctAnimationName: Plates
+  wrongAnimationName: Plates Murderer
   itemsToDisappear:
   - {fileID: 1062369275}
 --- !u!23 &1877647758
@@ -5542,8 +5542,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab5dd6e6d37682458b74950b5a118c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnimationName: 
-  wrongAnimationName: 
+  correctAnimationName: Rope
+  wrongAnimationName: Rope Murderer
   itemsToDisappear: []
 --- !u!23 &1898734474
 MeshRenderer:
@@ -6128,7 +6128,7 @@ PrefabInstance:
     - target: {fileID: 7605530706242644115, guid: 796fb8085d069634ca359d627a633b23,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -6246,7 +6246,7 @@ PrefabInstance:
     - target: {fileID: 7605530706242644115, guid: 796fb8085d069634ca359d627a633b23,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}

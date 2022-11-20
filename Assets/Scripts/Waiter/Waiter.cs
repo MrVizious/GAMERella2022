@@ -76,10 +76,12 @@ public class Waiter : MonoBehaviour
         GetNextSeat();
     }
 
-    protected virtual void GetNextSeat()
+    public virtual void GetNextSeat()
     {
         if (findNextSeatCoroutine == null)
         {
+            FreeSeat();
+            Debug.Log("Looking for next seat");
             findNextSeatCoroutine = StartCoroutine(GetNextSeatCoroutine());
         }
     }
@@ -113,6 +115,12 @@ public class Waiter : MonoBehaviour
     {
         targetSeat.Occupy(this);
         animator.Play(targetSeat.correctAnimationName);
+    }
+    protected virtual void FreeSeat()
+    {
+        if (targetSeat == null) return;
+        targetSeat.Free(this);
+        targetSeat = null;
     }
     private bool HasArrivedToSeat()
     {
