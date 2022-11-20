@@ -21,10 +21,6 @@ public class Murderer : Waiter
         StationName[] allStationNames = (StationName[])Enum.GetValues(typeof(StationName));
         System.Random rnd = new System.Random();
         sequence = allStationNames.OrderBy(x => rnd.Next()).ToList();
-        foreach (StationName station in sequence)
-        {
-            Debug.Log(station);
-        }
     }
 
     protected override void GetNextSeat()

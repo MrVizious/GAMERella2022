@@ -28,20 +28,17 @@ public class Seat : MonoBehaviour
             Debug.LogError("Can't reserve because it is not free");
             return;
         }
-        Debug.Log("Reserved!");
         isReserved = true;
         owner = newWaiter;
     }
 
     public void Occupy(Waiter newWaiter)
     {
-        Debug.Log("Trying to occupate", gameObject);
         if (newWaiter != owner)
         {
             Debug.LogError("A waiter that is not the owner is trying to use this seat!\nOwner: " + owner + "\nNew waiter: " + newWaiter, this);
             return;
         }
-        Debug.Log("Occupied!", gameObject);
         DisappearItems();
         isReserved = false;
         isBeingUsed = true;

@@ -84,7 +84,6 @@ public class TriadicPaletteSO : ScriptableObject
         Color.RGBToHSV(color1, out float H, out float S, out float V);
         color2 = Color.HSVToRGB((H + 0.33f) % 1f, S, V);
         color3 = Color.HSVToRGB((H + 0.66f) % 1f, S, V);
-        Debug.Log("Creating palette");
     }
 
     public void RandomizePallete()

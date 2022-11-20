@@ -99,7 +99,6 @@ public class Waiter : MonoBehaviour
             {
                 if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
                 {
-                    Debug.Log("Has arrived!");
                     return true;
                 }
             }
