@@ -17,7 +17,7 @@ public class SlowCamera : MonoBehaviour
     public CinemachineVirtualCamera vCamera;
     public Volume volume;
     public Collider murdererCol;
-    public int pixelsPerRaycast = 80;
+    public int raycastsBetweenBorders = 10;
 
     private void Start()
     {
@@ -29,9 +29,8 @@ public class SlowCamera : MonoBehaviour
     {
         if (starterAssetsInputs.fire)
         {
-            Debug.Log("Hi");
             starterAssetsInputs.FireInput(false);
-            LogVisiblePercentage();
+            GetVisiblePercentage();
         }
     }
 
@@ -47,10 +46,7 @@ public class SlowCamera : MonoBehaviour
         volume.enabled = false;
         vCamera.m_Lens.FieldOfView = 90;
     }
-    public void LogVisiblePercentage()
-    {
-        Debug.Log("Visible percentage is: " + GetVisiblePercentage());
-    }
+
     /// <summary>
     /// This calculates the cover percentage using RayCasts
     /// </summary>
@@ -59,9 +55,14 @@ public class SlowCamera : MonoBehaviour
     /// <returns>0.0=No Visibility, 1.0 = Full Visibility</returns>
     public float GetVisiblePercentage()
     {
-        Debug.Log("GetVisiblePercentage");
+
         if (murdererCol == null)
             return 0;
+
+        if (Vector3.Distance(murdererCol.transform.position, cam.transform.position) > 3.5f)
+        {
+            return 0;
+        }
 
 
         float TargetHits = 0;
@@ -85,23 +86,37 @@ public class SlowCamera : MonoBehaviour
         {
             int count = 0;
             //Loop through the screen space coords
-            for (float x = minX; x <= maxX; x += pixelsPerRaycast)
-                for (float y = minY; y <= maxY; y += pixelsPerRaycast)
+            for (float x = minX + 1; x < maxX; x += (maxX - minX) / raycastsBetweenBorders)
+                for (float y = minY + 1; y < maxY; y += (maxY - minY) / raycastsBetweenBorders)
                 {
+                    if (y >= maxY || x >= maxX) continue;
                     count++;
                     //Get a Ray from the Screen to to the locaiton in world Space
                     Ray ray = cam.ScreenPointToRay(new Vector3(x, y, 0));
+                    if (x < 0 || x > Screen.width || y < 0 || y > Screen.height)
+                    {
+                        Debug.DrawRay(ray.origin, ray.direction, Color.green, 1f);
+                        continue;
+                    }
 
                     //Check if it is a clear him without cover
-                    Debug.DrawRay(ray.origin, ray.direction, Color.red, 10f);
-                    if (Physics.Raycast(ray, out hit, Distance))
+                    if (Physics.Raycast(ray, out hit, Distance, ~(1 << LayerMask.NameToLayer("Character"))))
                     {
                         if (hit.transform.gameObject == murdererCol.gameObject)
                         {
+                            Debug.DrawRay(ray.origin, ray.direction, Color.red, 1f);
                             Debug.Log("Hit!");
                             //We hit the target
                             TargetHits++;//Increase hits
                         }
+                        else
+                        {
+                            Debug.DrawRay(ray.origin, ray.direction, Color.green, 1f);
+                        }
+                    }
+                    else
+                    {
+                        Debug.DrawRay(ray.origin, ray.direction, Color.green, 1f);
                     }
                 }
 
@@ -110,7 +125,9 @@ public class SlowCamera : MonoBehaviour
             if (TargetHits > 0)
             {
                 Debug.Log((TargetHits / count));
-                return TargetHits / count;
+                float percentage = TargetHits / count;
+                if (percentage > 0.8f && count > 80) Debug.Log("Valid picture");
+                return percentage;
             }
             else
                 return 0;
