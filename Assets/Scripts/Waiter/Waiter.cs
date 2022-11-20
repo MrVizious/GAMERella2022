@@ -11,6 +11,7 @@ public class Waiter : MonoBehaviour
     private float maxSecondsToDelay;
     [SerializeField]
     private MeshRenderer mask, jewels, feather;
+    protected Animator animator;
     protected Seat targetSeat
     {
         get { return _targetSeat; }
@@ -20,6 +21,7 @@ public class Waiter : MonoBehaviour
             {
                 _targetSeat = value;
                 agent.SetDestination(targetSeat.transform.position);
+                animator.Play("Walk");
                 hasArrivedToSeatCoroutine = StartCoroutine(HasArrivedToSeatCoroutine());
             }
         }
@@ -36,6 +38,7 @@ public class Waiter : MonoBehaviour
     protected void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
         float secondsToDelay = Random.Range(0, maxSecondsToDelay);
         GenerateColors();
         StartCoroutine(StartDelay(secondsToDelay));
@@ -53,7 +56,6 @@ public class Waiter : MonoBehaviour
         mask.material.SetColor("_BaseColor", colorPalette.color1);
         feather.material.SetColor("_BaseColor", colorPalette.color2);
         jewels.material.SetColor("_BaseColor", colorPalette.color3);
-
     }
 
     private void GenerateColors()
@@ -103,10 +105,15 @@ public class Waiter : MonoBehaviour
         {
             yield return new WaitForSeconds(0.05f);
         }
-        targetSeat.Occupy(this);
+        OccupySeat();
         hasArrivedToSeatCoroutine = null;
     }
 
+    protected virtual void OccupySeat()
+    {
+        targetSeat.Occupy(this);
+        animator.Play(targetSeat.correctAnimationName);
+    }
     private bool HasArrivedToSeat()
     {
         if (!agent.pathPending)

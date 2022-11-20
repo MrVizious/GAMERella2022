@@ -12,7 +12,7 @@ public class Murderer : Waiter
     protected new void Start()
     {
         CreateSequence();
-        currentSequenceIndex = 0;
+        currentSequenceIndex = -1;
         base.Start();
     }
 
@@ -33,6 +33,11 @@ public class Murderer : Waiter
         }
     }
 
+    protected override void OccupySeat()
+    {
+        targetSeat.Occupy(this);
+        animator.Play(targetSeat.wrongAnimationName);
+    }
     protected override IEnumerator GetNextSeatCoroutine()
     {
         while (targetSeat == null)

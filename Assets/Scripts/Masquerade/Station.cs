@@ -54,8 +54,8 @@ public class Station : MonoBehaviour
 
 public enum StationName
 {
-    Vino,
-    Platos,
-    Ponche,
-    Abrigos
+    Wine,
+    Plates,
+    Rope,
+    Jacket
 }
