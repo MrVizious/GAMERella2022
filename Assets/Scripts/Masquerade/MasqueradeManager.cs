@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Sirenix.OdinInspector;
 
 public class MasqueradeManager : Singleton<MasqueradeManager>
@@ -8,6 +9,9 @@ public class MasqueradeManager : Singleton<MasqueradeManager>
 
     [SerializeField]
     public List<Station> stations;
+    public int MaxTimePerGame = 120;
+    public Text secondsLeftText;
+
 
     public Seat GetEmptySeatForWaiter()
     {
@@ -65,4 +69,21 @@ public class MasqueradeManager : Singleton<MasqueradeManager>
     {
         return Vacancy();
     }
+
+    public void Win()
+    {
+        Debug.Log("Game Won!");
+        SceneManagement.Instance.LoadYouWin();
+    }
+
+    private void Update()
+    {
+        secondsLeftText.text = "" + (MaxTimePerGame - (int)Time.timeSinceLevelLoad);
+        if (Time.timeSinceLevelLoad >= MaxTimePerGame)
+        {
+            SceneManagement.Instance.LoadYouLose();
+        }
+    }
+
+
 }

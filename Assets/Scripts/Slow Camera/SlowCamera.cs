@@ -6,6 +6,7 @@ using UnityEngine.Rendering;
 using UnityEngine.InputSystem;
 using StarterAssets;
 using UnityEngine.UI;
+using UnityEngine.Events;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -23,6 +24,7 @@ public class SlowCamera : MonoBehaviour
     public float timeToSetUp = 3f;
     public Slider slider;
     private Coroutine slowSetOldCameraCoroutine = null;
+    public UnityEvent onWon;
 
     private void Start()
     {
@@ -189,7 +191,7 @@ public class SlowCamera : MonoBehaviour
             if (TargetHits > 0)
             {
                 float percentage = TargetHits / count;
-                //if (percentage > 0.8f && count > 80) Debug.Log("Valid picture");
+                if (percentage > 0.7f && count > 80) onWon.Invoke();
                 return percentage;
             }
             else
