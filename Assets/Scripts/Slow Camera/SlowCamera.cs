@@ -33,14 +33,16 @@ public class SlowCamera : MonoBehaviour
 
     private void Update()
     {
-        if (starterAssetsInputs.fire)
+        if (starterAssetsInputs.fire && slider.value == 1f)
         {
             starterAssetsInputs.FireInput(false);
-            GetVisiblePercentage();
+            if (GetVisiblePercentage() > 0.7f)
+            {
+                Debug.Log("You won!");
+            }
         }
         if (starterAssetsInputs.setup)
         {
-            Debug.Log("Setting up?");
             starterAssetsInputs.SetupInput(false);
             if (slider.value == 0f) SlowSetUpOldCamera();
             if (slider.value == 1f) SlowSetDownOldCamera();
@@ -123,7 +125,7 @@ public class SlowCamera : MonoBehaviour
         if (murdererCol == null)
             return 0;
 
-        if (Vector3.Distance(murdererCol.transform.position, cam.transform.position) > 3.5f)
+        if (Vector3.Distance(murdererCol.transform.position, cam.transform.position) > 7.5f)
         {
             return 0;
         }
@@ -186,9 +188,8 @@ public class SlowCamera : MonoBehaviour
 
             if (TargetHits > 0)
             {
-                Debug.Log((TargetHits / count));
                 float percentage = TargetHits / count;
-                if (percentage > 0.8f && count > 80) Debug.Log("Valid picture");
+                //if (percentage > 0.8f && count > 80) Debug.Log("Valid picture");
                 return percentage;
             }
             else
