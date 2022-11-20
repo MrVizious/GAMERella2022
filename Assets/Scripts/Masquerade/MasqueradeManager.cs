@@ -15,7 +15,11 @@ public class MasqueradeManager : Singleton<MasqueradeManager>
 
     public Seat GetEmptySeatForWaiter()
     {
-        if (!VacancyForWaiter()) return null;
+        if (!VacancyForWaiter())
+        {
+            Debug.Log("No vacant for waiter");
+            return null;
+        }
 
         while (true)
         {
