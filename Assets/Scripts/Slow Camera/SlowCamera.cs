@@ -5,6 +5,7 @@ using Cinemachine;
 using UnityEngine.Rendering;
 using UnityEngine.InputSystem;
 using StarterAssets;
+using UnityEngine.UI;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -13,16 +14,21 @@ public class SlowCamera : MonoBehaviour
 {
     private Camera cam;
     private StarterAssetsInputs starterAssetsInputs;
+    public FirstPersonController controller;
 
     public CinemachineVirtualCamera vCamera;
     public Volume volume;
     public Collider murdererCol;
     public int raycastsBetweenBorders = 10;
+    public float timeToSetUp = 3f;
+    public Slider slider;
+    private Coroutine slowSetOldCameraCoroutine = null;
 
     private void Start()
     {
         cam = Camera.main;
         starterAssetsInputs = FindObjectOfType<StarterAssetsInputs>();
+        slider.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -32,8 +38,66 @@ public class SlowCamera : MonoBehaviour
             starterAssetsInputs.FireInput(false);
             GetVisiblePercentage();
         }
+        if (starterAssetsInputs.setup)
+        {
+            Debug.Log("Setting up?");
+            starterAssetsInputs.SetupInput(false);
+            if (slider.value == 0f) SlowSetUpOldCamera();
+            if (slider.value == 1f) SlowSetDownOldCamera();
+        }
+
     }
 
+    public void SlowSetUpOldCamera()
+    {
+        if (slowSetOldCameraCoroutine == null && slider.value == 0f)
+        {
+            slowSetOldCameraCoroutine = StartCoroutine(SlowSetUpOldCameraCoroutine());
+        }
+
+    }
+    public void SlowSetDownOldCamera()
+    {
+        if (slowSetOldCameraCoroutine == null && slider.value == 1f)
+        {
+            slowSetOldCameraCoroutine = StartCoroutine(SlowSetDownOldCameraCoroutine());
+        }
+
+    }
+
+    private IEnumerator SlowSetUpOldCameraCoroutine()
+    {
+        slider.gameObject.SetActive(true);
+        slider.value = 0;
+        controller.canLook = false;
+        controller.canMove = false;
+        while (slider.value < 1f)
+        {
+            slider.value += Time.deltaTime / timeToSetUp;
+            yield return null;
+        }
+        slider.gameObject.SetActive(false);
+        ActivateOldCameraFilters();
+        controller.canLook = true;
+        slowSetOldCameraCoroutine = null;
+    }
+    private IEnumerator SlowSetDownOldCameraCoroutine()
+    {
+        slider.gameObject.SetActive(true);
+        slider.value = 1f;
+        controller.canLook = false;
+        controller.canMove = false;
+        while (slider.value > 0f)
+        {
+            slider.value -= Time.deltaTime / timeToSetUp;
+            yield return null;
+        }
+        slider.gameObject.SetActive(false);
+        DeactivateOldCameraFilters();
+        controller.canLook = true;
+        controller.canMove = true;
+        slowSetOldCameraCoroutine = null;
+    }
 
     public void ActivateOldCameraFilters()
     {
@@ -146,11 +210,11 @@ public class SlowCameraEditor : Editor
         SlowCamera myScript = (SlowCamera)target;
         if (GUILayout.Button("Activate Old Camera"))
         {
-            myScript.ActivateOldCameraFilters();
+            myScript.SlowSetUpOldCamera();
         }
         if (GUILayout.Button("Deactivate Old Camera"))
         {
-            myScript.DeactivateOldCameraFilters();
+            myScript.SlowSetDownOldCamera();
         }
         if (GUILayout.Button("Percentage"))
         {

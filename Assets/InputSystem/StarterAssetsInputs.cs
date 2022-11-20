@@ -13,6 +13,7 @@ namespace StarterAssets
         public bool jump;
         public bool sprint;
         public bool fire;
+        public bool setup;
 
         [Header("Movement Settings")]
         public bool analogMovement;
@@ -48,9 +49,18 @@ namespace StarterAssets
         {
             FireInput(value.isPressed);
         }
+        public void OnSetup(InputValue value)
+        {
+            Debug.Log("Something on setup");
+            SetupInput(value.isPressed);
+        }
 
 #endif
 
+        public void SetupInput(bool newSetupState)
+        {
+            setup = newSetupState;
+        }
 
         public void FireInput(bool newFireState)
         {
