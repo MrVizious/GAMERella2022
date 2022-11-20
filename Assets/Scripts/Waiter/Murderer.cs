@@ -29,7 +29,6 @@ public class Murderer : Waiter
         {
             currentSequenceIndex++;
             currentSequenceIndex %= sequence.Count;
-            Debug.Log("Starting to get next seat");
             findNextSeatCoroutine = StartCoroutine(GetNextSeatCoroutine());
         }
     }
