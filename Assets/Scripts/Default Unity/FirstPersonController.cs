@@ -12,6 +12,8 @@ namespace StarterAssets
     public class FirstPersonController : MonoBehaviour
     {
         public bool canLookUpAndDown = true;
+        public bool canMove = true;
+        public bool canLook = true;
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 4.0f;
@@ -132,6 +134,7 @@ namespace StarterAssets
 
         private void CameraRotation()
         {
+            if (!canLook) return;
             // if there is an input
             if (_input.look.sqrMagnitude >= _threshold)
             {
@@ -155,8 +158,10 @@ namespace StarterAssets
 
         private void Move()
         {
+            if (!canMove) _input.move = Vector2.zero;
             // set target speed based on move speed, sprint speed and if sprint is pressed
-            float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+            float targetSpeed = (_input.sprint && !canMove) ? SprintSpeed : MoveSpeed;
+
 
             // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -221,7 +226,7 @@ namespace StarterAssets
                 }
 
                 // jump timeout
-                if (_jumpTimeoutDelta >= 0.0f)
+                if (canMove && _jumpTimeoutDelta >= 0.0f)
                 {
                     _jumpTimeoutDelta -= Time.deltaTime;
                 }
