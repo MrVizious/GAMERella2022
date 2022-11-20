@@ -28,6 +28,10 @@ public class Waiter : MonoBehaviour
     protected Coroutine findNextSeatCoroutine = null;
     protected Coroutine hasArrivedToSeatCoroutine = null;
     protected NavMeshAgent agent;
+    private TriadicPaletteSO colorPalette;
+    public Material featherMaterial;
+    public Material maskMaterial;
+    public Material jewelMaterial;
 
     protected void Start()
     {
@@ -37,14 +41,26 @@ public class Waiter : MonoBehaviour
         StartCoroutine(StartDelay(secondsToDelay));
     }
 
+    private void Update()
+    {
+        ApplyColors();
+    }
+    private void ApplyColors()
+    {
+        feather.material = featherMaterial;
+        mask.material = maskMaterial;
+        jewels.material = jewelMaterial;
+        mask.material.SetColor("_BaseColor", colorPalette.color1);
+        feather.material.SetColor("_BaseColor", colorPalette.color2);
+        jewels.material.SetColor("_BaseColor", colorPalette.color3);
+
+    }
+
     private void GenerateColors()
     {
-        TriadicPaletteSO newColorPallete = ScriptableObject.CreateInstance(typeof(TriadicPaletteSO)) as TriadicPaletteSO;
-        newColorPallete.RandomizePallete();
-        mask.material.color = newColorPallete.color1;
-        feather.material.color = newColorPallete.color2;
-        jewels.material.color = newColorPallete.color3;
-
+        colorPalette = ScriptableObject.CreateInstance(typeof(TriadicPaletteSO)) as TriadicPaletteSO;
+        colorPalette.RandomizePallete();
+        ApplyColors();
     }
 
     private IEnumerator StartDelay(float secondsToDelay)

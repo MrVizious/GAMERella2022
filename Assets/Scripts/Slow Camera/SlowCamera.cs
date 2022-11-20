@@ -75,7 +75,6 @@ public class SlowCamera : MonoBehaviour
         //Project to screen Space
         Vector3 minScreen = cam.WorldToScreenPoint(Min);
         Vector3 maxScreen = cam.WorldToScreenPoint(Max);
-        Debug.Log("MinScreen: " + minScreen + ", MaxScreen: " + maxScreen);
         float minX = Mathf.Min(minScreen.x, maxScreen.x);
         float maxX = Mathf.Max(minScreen.x, maxScreen.x);
         float minY = Mathf.Min(minScreen.y, maxScreen.y);
@@ -105,7 +104,6 @@ public class SlowCamera : MonoBehaviour
                         if (hit.transform.gameObject == murdererCol.gameObject)
                         {
                             Debug.DrawRay(ray.origin, ray.direction, Color.red, 1f);
-                            Debug.Log("Hit!");
                             //We hit the target
                             TargetHits++;//Increase hits
                         }
