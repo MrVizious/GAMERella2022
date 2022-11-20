@@ -27,6 +27,7 @@ public class Murderer : Waiter
     {
         if (findNextSeatCoroutine == null)
         {
+            FreeSeat();
             currentSequenceIndex++;
             currentSequenceIndex %= sequence.Count;
             findNextSeatCoroutine = StartCoroutine(GetNextSeatCoroutine());
@@ -48,7 +49,7 @@ public class Murderer : Waiter
                 newSeat.Reserve(this);
                 targetSeat = newSeat;
             }
-            yield return new WaitForSeconds(0.1f);
+            yield return null;
         }
         findNextSeatCoroutine = null;
     }

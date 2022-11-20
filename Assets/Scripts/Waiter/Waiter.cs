@@ -12,6 +12,7 @@ public class Waiter : MonoBehaviour
     [SerializeField]
     private MeshRenderer mask, jewels, feather;
     protected Animator animator;
+    [ShowInInspector]
     protected Seat targetSeat
     {
         get { return _targetSeat; }
@@ -20,14 +21,19 @@ public class Waiter : MonoBehaviour
             if (hasArrivedToSeatCoroutine == null)
             {
                 _targetSeat = value;
-                agent.SetDestination(targetSeat.transform.position);
+                if (_targetSeat != null)
+                {
+                    agent.SetDestination(targetSeat.transform.position);
+                    hasArrivedToSeatCoroutine = StartCoroutine(HasArrivedToSeatCoroutine());
+                }
                 animator.Play("Walk");
-                hasArrivedToSeatCoroutine = StartCoroutine(HasArrivedToSeatCoroutine());
             }
         }
     }
     private Seat _targetSeat;
+    [ShowInInspector]
     protected Coroutine findNextSeatCoroutine = null;
+    [ShowInInspector]
     protected Coroutine hasArrivedToSeatCoroutine = null;
     protected NavMeshAgent agent;
     private TriadicPaletteSO colorPalette;
@@ -47,7 +53,17 @@ public class Waiter : MonoBehaviour
     private void Update()
     {
         ApplyColors();
+        if (Time.frameCount % 15 == 0 && Time.timeSinceLevelLoad >= maxSecondsToDelay)
+        {
+            var clipInfo = animator.GetCurrentAnimatorClipInfo(0);
+            string nameOfClip = clipInfo[0].clip.name;
+            if (nameOfClip == "Walk" && hasArrivedToSeatCoroutine == null && findNextSeatCoroutine == null)
+            {
+                GetNextSeat();
+            }
+        }
     }
+
     private void ApplyColors()
     {
         feather.material = featherMaterial;
@@ -81,7 +97,6 @@ public class Waiter : MonoBehaviour
         if (findNextSeatCoroutine == null)
         {
             FreeSeat();
-            Debug.Log("Looking for next seat");
             findNextSeatCoroutine = StartCoroutine(GetNextSeatCoroutine());
         }
     }
@@ -96,7 +111,7 @@ public class Waiter : MonoBehaviour
                 newSeat.Reserve(this);
                 targetSeat = newSeat;
             }
-            yield return new WaitForSeconds(0.1f);
+            yield return null;
         }
         findNextSeatCoroutine = null;
     }
@@ -105,7 +120,7 @@ public class Waiter : MonoBehaviour
     {
         while (!HasArrivedToSeat())
         {
-            yield return new WaitForSeconds(0.05f);
+            yield return null;
         }
         OccupySeat();
         hasArrivedToSeatCoroutine = null;
@@ -116,7 +131,7 @@ public class Waiter : MonoBehaviour
         targetSeat.Occupy(this);
         animator.Play(targetSeat.correctAnimationName);
     }
-    protected virtual void FreeSeat()
+    protected void FreeSeat()
     {
         if (targetSeat == null) return;
         targetSeat.Free(this);
@@ -133,6 +148,10 @@ public class Waiter : MonoBehaviour
                     return true;
                 }
             }
+        }
+        if (agent.stoppingDistance >= Vector2.Distance(transform.position, targetSeat.transform.position))
+        {
+            return true;
         }
         return false;
     }
