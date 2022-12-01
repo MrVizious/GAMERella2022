@@ -25,11 +25,11 @@ public class SceneManagement : MonoBehaviour
 
     public void LoadMainMenu()
     {
-        SceneManager.LoadScene("Playground");
+        SceneManager.LoadScene("MainMenu");
     }
     public void LoadMainScene()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("Playground");
     }
     public void LoadCredits()
     {
