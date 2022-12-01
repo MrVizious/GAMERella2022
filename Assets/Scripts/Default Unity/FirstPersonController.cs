@@ -160,7 +160,7 @@ namespace StarterAssets
         {
             if (!canMove) _input.move = Vector2.zero;
             // set target speed based on move speed, sprint speed and if sprint is pressed
-            float targetSpeed = (_input.sprint && !canMove) ? SprintSpeed : MoveSpeed;
+            float targetSpeed = (_input.sprint && canMove) ? SprintSpeed : MoveSpeed;
 
 
             // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon

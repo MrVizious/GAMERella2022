@@ -18,9 +18,18 @@ public class Murderer : Waiter
 
     protected void CreateSequence()
     {
-        StationName[] allStationNames = (StationName[])Enum.GetValues(typeof(StationName));
+        //StationName[] allStationNames = (StationName[])Enum.GetValues(typeof(StationName));
+        HashSet<StationName> stationNames = new HashSet<StationName>();
+        foreach (Station station in MasqueradeManager.Instance.stations)
+        {
+            stationNames.Add(station.stationName);
+        }
         System.Random rnd = new System.Random();
-        sequence = allStationNames.OrderBy(x => rnd.Next()).ToList();
+        sequence = stationNames.OrderBy(x => rnd.Next()).ToList();
+        foreach (StationName stationName in sequence)
+        {
+            Debug.Log(stationName);
+        }
     }
 
     public override void GetNextSeat()
@@ -39,6 +48,7 @@ public class Murderer : Waiter
         targetSeat.Occupy(this);
         animator.Play(targetSeat.wrongAnimationName);
     }
+
     protected override IEnumerator GetNextSeatCoroutine()
     {
         while (targetSeat == null)
