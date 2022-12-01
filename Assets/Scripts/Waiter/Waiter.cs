@@ -55,13 +55,22 @@ public class Waiter : MonoBehaviour
         ApplyColors();
         if (Time.frameCount % 15 == 0 && Time.timeSinceLevelLoad >= maxSecondsToDelay)
         {
-            var clipInfo = animator.GetCurrentAnimatorClipInfo(0);
-            string nameOfClip = clipInfo[0].clip.name;
-            if (nameOfClip == "Walk" && hasArrivedToSeatCoroutine == null && findNextSeatCoroutine == null)
+            if (IsWalking())
             {
                 GetNextSeat();
             }
         }
+    }
+
+    public bool IsWalking()
+    {
+        var clipInfo = animator.GetCurrentAnimatorClipInfo(0);
+        string nameOfClip = clipInfo[0].clip.name;
+        if (nameOfClip == "Walk" && hasArrivedToSeatCoroutine == null && findNextSeatCoroutine == null)
+        {
+            return true;
+        }
+        return false;
     }
 
     private void ApplyColors()

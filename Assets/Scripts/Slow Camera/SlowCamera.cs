@@ -126,6 +126,13 @@ public class SlowCamera : MonoBehaviour
 
         if (murdererCol == null)
             return 0;
+        Murderer murderer = murdererCol.GetComponent<Murderer>();
+        if (murderer == null)
+            return 0;
+        if (murderer.IsWalking())
+        {
+            return 0;
+        }
 
         if (Vector3.Distance(murdererCol.transform.position, cam.transform.position) > 7.5f)
         {
