@@ -96,6 +96,7 @@ namespace StarterAssets
             {
                 _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
             }
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         private void Start()
